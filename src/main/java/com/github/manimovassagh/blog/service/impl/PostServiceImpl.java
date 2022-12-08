@@ -6,9 +6,10 @@ import com.github.manimovassagh.blog.repository.PostRepository;
 import com.github.manimovassagh.blog.service.PostService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 
 @Service
@@ -21,7 +22,7 @@ public class PostServiceImpl implements PostService {
 
         //convert DTO to Entity
 
-        Post post = mapFromDTO(postDTO);
+        Post post = mapToEntity(postDTO);
 
         //save to repository
         Post savedPost = postRepository.save(post);
@@ -37,7 +38,8 @@ public class PostServiceImpl implements PostService {
     @Override
     public List<PostDTO> getAllPosts() {
         List<Post> posts = postRepository.findAll();
-       return null;
+        List<PostDTO> listOfPosts = posts.stream().map(post -> mapToDTO(post)).collect(Collectors.toList());
+        return listOfPosts;
     }
 
 
@@ -50,7 +52,7 @@ public class PostServiceImpl implements PostService {
         return postDTO;
     }
 
-    private Post mapFromDTO(PostDTO postDTO){
+    private Post mapToEntity(PostDTO postDTO){
        Post post=new Post();
        post.setTitle(postDTO.getTitle());
         post.setContent(postDTO.getContent());
