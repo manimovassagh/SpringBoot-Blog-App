@@ -29,8 +29,8 @@ public class PostController {
      * @return list of post DTO
      */
     @GetMapping
-    public List<PostDTO> getAllPosts() {
-        return postService.getAllPosts();
+    public List<PostDTO> getAllPosts(@RequestParam(value = "pageNo",defaultValue = "1",required = false)int pageNo,@RequestParam(value = "pageSize",defaultValue = "5",required = false)int pageSize) {
+        return postService.getAllPosts(pageNo,pageSize);
     }
 
     @GetMapping("/{id}")
@@ -49,6 +49,8 @@ public class PostController {
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deletePostById(@PathVariable(name = "id")  long id) {
         postService.deletePostById(id);
+        //another option to return response
+       // return new ResponseEntity<>("Post successfully delete with id Number ",HttpStatus.OK) ;
         return ResponseEntity.ok("Post successfully delete with id Number " + id);
     }
 

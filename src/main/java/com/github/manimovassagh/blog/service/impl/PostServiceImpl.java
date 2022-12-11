@@ -37,7 +37,9 @@ public class PostServiceImpl implements PostService {
 
 
     @Override
-    public List<PostDTO> getAllPosts() {
+    public List<PostDTO> getAllPosts(int pageNo,int pageSize) {
+
+        //create Pageable Instance
         List<Post> posts = postRepository.findAll();
         List<PostDTO> listOfPosts = posts.stream().map(post -> mapToDTO(post)).collect(Collectors.toList());
         return listOfPosts;
