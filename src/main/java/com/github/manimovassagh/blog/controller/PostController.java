@@ -32,7 +32,7 @@ public class PostController {
     public List<PostDTO> getAllPosts() {
         return postService.getAllPosts();
     }
-//made some
+
     @GetMapping("/{id}")
     public PostDTO getPostById(@PathVariable(name = "id") long postId) {
         return postService.getPostById(postId);
