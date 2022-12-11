@@ -2,6 +2,7 @@ package com.github.manimovassagh.blog.controller;
 
 
 import com.github.manimovassagh.blog.payload.PostDTO;
+import com.github.manimovassagh.blog.payload.PostResponse;
 import com.github.manimovassagh.blog.service.PostService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -29,7 +30,7 @@ public class PostController {
      * @return list of post DTO
      */
     @GetMapping
-    public List<PostDTO> getAllPosts(
+    public PostResponse getAllPosts(
             @RequestParam(value = "pageNo",defaultValue = "0",required = false)int pageNo
             ,@RequestParam(value = "pageSize",defaultValue = "5",required = false)int pageSize) {
         return postService.getAllPosts(pageNo,pageSize);

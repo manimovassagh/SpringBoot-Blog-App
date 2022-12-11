@@ -3,6 +3,7 @@ package com.github.manimovassagh.blog.service.impl;
 import com.github.manimovassagh.blog.entity.Post;
 import com.github.manimovassagh.blog.exception.ResourceNotFoundException;
 import com.github.manimovassagh.blog.payload.PostDTO;
+import com.github.manimovassagh.blog.payload.PostResponse;
 import com.github.manimovassagh.blog.repository.PostRepository;
 import com.github.manimovassagh.blog.service.PostService;
 import lombok.RequiredArgsConstructor;
@@ -41,14 +42,29 @@ public class PostServiceImpl implements PostService {
 
 
     @Override
-    public List<PostDTO> getAllPosts(int pageNo, int pageSize) {
+    public PostResponse getAllPosts(int pageNo, int pageSize) {
 
-        //create Pageable Instance
-        Pageable pageable = PageRequest.of(pageNo, pageSize).first();
+
+        // create Pageable instance
+        Pageable pageable = PageRequest.of(pageNo, pageSize);
+
         Page<Post> posts = postRepository.findAll(pageable);
-        //get content from page object
+
+        // get content for page object
         List<Post> listOfPosts = posts.getContent();
-        return listOfPosts.stream().map(post -> mapToDTO(post)).collect(Collectors.toList());
+
+        List<PostDTO> content= listOfPosts.stream().map(post -> mapToDTO(post)).collect(Collectors.toList());
+
+        PostResponse postResponse = new PostResponse();
+        postResponse.setContent(content);
+        postResponse.setPageNo(posts.getNumber());
+        postResponse.setPageSize(posts.getSize());
+        postResponse.setTotalElements(posts.getTotalElements());
+        postResponse.setTotalPages(posts.getTotalPages());
+        postResponse.setLast(posts.isLast());
+
+        return postResponse;
+
     }
 
     @Override
