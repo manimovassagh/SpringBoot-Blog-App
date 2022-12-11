@@ -39,4 +39,11 @@ public class PostController {
     }
 
 
+    @PutMapping("/{id}")
+    public PostDTO updatePost(@RequestBody PostDTO postDTO, @PathVariable long id) {
+
+        return null;
+    }
+
+
 }

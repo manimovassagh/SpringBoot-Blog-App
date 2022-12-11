@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 
 @Service
@@ -48,6 +47,16 @@ public class PostServiceImpl implements PostService {
     public PostDTO getPostById(Long id) {
      Post post = postRepository.findById(id).orElseThrow(()->new ResourceNotFoundException("Post","id",id));
         return mapToDTO(post);
+    }
+
+    @Override
+    public PostDTO updatePost(PostDTO postDTO, long id) {
+      Post post=postRepository.findById(id).orElseThrow(()->new ResourceNotFoundException("Post","id",id));
+      post.setTitle(postDTO.getTitle());
+      post.setContent(postDTO.getContent());
+      post.setDescription(postDTO.getDescription());
+      Post updatedPost=   postRepository.save(post);
+      return mapToDTO(updatedPost);
     }
 
 

@@ -24,12 +24,10 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/posts",
-							"protocol": "http",
+							"raw": "{{localhost}}/api/posts",
 							"host": [
-								"localhost"
+								"{{localhost}}"
 							],
-							"port": "8080",
 							"path": [
 								"api",
 								"posts"
@@ -44,15 +42,51 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/api/posts",
-							"protocol": "http",
+							"raw": "{{localhost}}/api/posts",
 							"host": [
-								"localhost"
+								"{{localhost}}"
 							],
-							"port": "8080",
 							"path": [
 								"api",
 								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Post By ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{localhost}}/api/posts/3",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"api",
+								"posts",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Post By ID EXCEPTION Check",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{localhost}}/api/posts/3342342",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"api",
+								"posts",
+								"3342342"
 							]
 						}
 					},
