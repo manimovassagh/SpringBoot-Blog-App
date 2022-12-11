@@ -25,11 +25,18 @@ public class PostController {
 
     /**
      * Get all Posts from the database and send it as DTO to user
+     *
      * @return list of post DTO
      */
     @GetMapping
-    public List<PostDTO> getAllPosts(){
-       return  postService.getAllPosts();
+    public List<PostDTO> getAllPosts() {
+        return postService.getAllPosts();
     }
+//made some
+    @GetMapping("/{id}")
+    public PostDTO getPostById(@PathVariable(name = "id") long postId) {
+        return postService.getPostById(postId);
+    }
+
 
 }

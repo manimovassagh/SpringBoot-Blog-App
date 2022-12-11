@@ -1,6 +1,7 @@
 package com.github.manimovassagh.blog.service.impl;
 
 import com.github.manimovassagh.blog.entity.Post;
+import com.github.manimovassagh.blog.exception.ResourceNotFoundException;
 import com.github.manimovassagh.blog.payload.PostDTO;
 import com.github.manimovassagh.blog.repository.PostRepository;
 import com.github.manimovassagh.blog.service.PostService;
@@ -8,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -42,9 +44,15 @@ public class PostServiceImpl implements PostService {
         return listOfPosts;
     }
 
+    @Override
+    public PostDTO getPostById(Long id) {
+     Post post = postRepository.findById(id).orElseThrow(()->new ResourceNotFoundException("Post","id",id));
+        return mapToDTO(post);
+    }
 
-    private PostDTO mapToDTO(Post post){
-        PostDTO postDTO=new PostDTO();
+
+    private PostDTO mapToDTO(Post post) {
+        PostDTO postDTO = new PostDTO();
         postDTO.setId(post.getId());
         postDTO.setTitle(post.getTitle());
         postDTO.setDescription(post.getDescription());
@@ -52,14 +60,13 @@ public class PostServiceImpl implements PostService {
         return postDTO;
     }
 
-    private Post mapToEntity(PostDTO postDTO){
-       Post post=new Post();
-       post.setTitle(postDTO.getTitle());
+    private Post mapToEntity(PostDTO postDTO) {
+        Post post = new Post();
+        post.setTitle(postDTO.getTitle());
         post.setContent(postDTO.getContent());
         post.setDescription(postDTO.getDescription());
         return post;
     }
-
 
 
 }
