@@ -60,7 +60,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{localhost}}/api/posts?pageNo=1&pageSize=4",
+							"raw": "{{localhost}}/api/posts?pageNo=5&pageSize=5",
 							"host": [
 								"{{localhost}}"
 							],
@@ -71,11 +71,11 @@
 							"query": [
 								{
 									"key": "pageNo",
-									"value": "1"
+									"value": "5"
 								},
 								{
 									"key": "pageSize",
-									"value": "4"
+									"value": "5"
 								}
 							]
 						}
