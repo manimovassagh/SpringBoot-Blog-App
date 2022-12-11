@@ -55,6 +55,34 @@
 					"response": []
 				},
 				{
+					"name": "Get all Posts, pagination",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{localhost}}/api/posts?pageNo=1&pageSize=4",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"api",
+								"posts"
+							],
+							"query": [
+								{
+									"key": "pageNo",
+									"value": "1"
+								},
+								{
+									"key": "pageSize",
+									"value": "4"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Get Post By ID",
 					"request": {
 						"method": "GET",
@@ -163,14 +191,14 @@
 							}
 						},
 						"url": {
-							"raw": "{{localhost}}/api/posts/4",
+							"raw": "{{localhost}}/api/posts/14",
 							"host": [
 								"{{localhost}}"
 							],
 							"path": [
 								"api",
 								"posts",
-								"4"
+								"14"
 							]
 						}
 					},
