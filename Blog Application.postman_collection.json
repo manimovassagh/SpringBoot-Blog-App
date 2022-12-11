@@ -60,5 +60,11 @@
 				}
 			]
 		}
+	],
+	"variable": [
+		{
+			"key": "localhost",
+			"value": "http://localhost:8080"
+		}
 	]
 }
