@@ -1,8 +1,6 @@
 package com.github.manimovassagh.blog.utils;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+
 
 
 public class AppConstants {
