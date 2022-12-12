@@ -55,6 +55,76 @@
 					"response": []
 				},
 				{
+					"name": "Get all Posts sorting",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{localhost}}/api/posts?pageNo=0&pageSize=45&sortBy=title",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"api",
+								"posts"
+							],
+							"query": [
+								{
+									"key": "pageNo",
+									"value": "0"
+								},
+								{
+									"key": "pageSize",
+									"value": "45"
+								},
+								{
+									"key": "sortBy",
+									"value": "title"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all Posts sorting ascending",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{localhost}}/api/posts?pageNo=0&pageSize=45&sortBy=title&sortDir=desc",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"api",
+								"posts"
+							],
+							"query": [
+								{
+									"key": "pageNo",
+									"value": "0"
+								},
+								{
+									"key": "pageSize",
+									"value": "45"
+								},
+								{
+									"key": "sortBy",
+									"value": "title",
+									"description": "specify field that should be sort"
+								},
+								{
+									"key": "sortDir",
+									"value": "desc",
+									"description": "make ascending or descending(asc,desc)"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Get all Posts, pagination",
 					"request": {
 						"method": "GET",
