@@ -7,6 +7,7 @@ import com.github.manimovassagh.blog.payload.PostResponse;
 import com.github.manimovassagh.blog.repository.PostRepository;
 import com.github.manimovassagh.blog.service.PostService;
 import lombok.RequiredArgsConstructor;
+import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -21,6 +22,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class PostServiceImpl implements PostService {
     private final PostRepository postRepository;
+    private final ModelMapper mapper;
 
     @Override
     public PostDTO createPost(PostDTO postDTO) {
@@ -94,19 +96,27 @@ public class PostServiceImpl implements PostService {
 
 
     private PostDTO mapToDTO(Post post) {
+
+        PostDTO postDTO = mapper.map(post, PostDTO.class);
+
+        /*
         PostDTO postDTO = new PostDTO();
         postDTO.setId(post.getId());
         postDTO.setTitle(post.getTitle());
         postDTO.setDescription(post.getDescription());
         postDTO.setContent(post.getContent());
+        */
         return postDTO;
     }
 
     private Post mapToEntity(PostDTO postDTO) {
+        Post post = mapper.map(postDTO, Post.class);
+        /*
         Post post = new Post();
         post.setTitle(postDTO.getTitle());
         post.setContent(postDTO.getContent());
         post.setDescription(postDTO.getDescription());
+        */
         return post;
     }
 
