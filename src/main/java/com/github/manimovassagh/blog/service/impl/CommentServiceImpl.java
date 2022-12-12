@@ -10,6 +10,9 @@ import com.github.manimovassagh.blog.service.CommentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 
 @Service
 @RequiredArgsConstructor
@@ -30,6 +33,27 @@ public class CommentServiceImpl implements CommentService {
         //save comment entity to database
         Comment generatedComment = commentRepository.save(comment);
         return mapToDto(generatedComment);
+    }
+
+    @Override
+    public List<CommentDto> getCommentsByPostId(long postId) {
+
+        //retrieve comments by Post Id
+        List<Comment> comments = commentRepository.findByPostId(postId);
+        //convert List of comment entities to comment DTO
+        return comments.stream().map(comment -> mapToDto(comment)).collect(Collectors.toList());
+    }
+
+    @Override
+    public CommentDto getCommentById(long postId, long commentId) {
+        //retrieve Post Entity base on ID
+        Post post = postRepository.findById(postId).orElseThrow(() -> new ResourceNotFoundException("Post", "id", postId));
+
+        //retrieve comment by ID
+        Comment comment=commentRepository.findById(commentId)
+                .orElseThrow(()->new ResourceNotFoundException("Comment","id",commentId));
+
+        return null;
     }
 
 
