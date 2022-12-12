@@ -23,7 +23,13 @@ public class CommentServiceImpl implements CommentService {
         Comment comment = mapToEntity(commentDto);
         //retrieve Post Entity base on ID
         Post post = postRepository.findById(postId).orElseThrow(() -> new ResourceNotFoundException("Post", "id", postId));
-        return null;
+
+        //set post to comment entity
+        comment.setPost(post);
+
+        //save comment entity to database
+        Comment generatedComment = commentRepository.save(comment);
+        return mapToDto(generatedComment);
     }
 
 
@@ -33,6 +39,7 @@ public class CommentServiceImpl implements CommentService {
         commentDto.setName(comment.getName());
         commentDto.setBody(comment.getBody());
         commentDto.setEmail(comment.getEmail());
+
         return commentDto;
     }
 
