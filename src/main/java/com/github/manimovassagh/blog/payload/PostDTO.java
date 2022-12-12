@@ -21,6 +21,8 @@ public class PostDTO {
 
     private String description;
     @NotEmpty
+    @Size(min = 2,message = "Post content should have at least 2 characters")
+
     private  String content;
 
     private Set<CommentDto> comments;
