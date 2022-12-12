@@ -307,6 +307,134 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "get all comments base on post Id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\n    \"name\":\"Mani Movassagh\",\n    \"email\":\"mani@gmail.com\",\n    \"body\":\"I am Mani and comment on your post\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localhost}}/api/posts/1/comments",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"api",
+								"posts",
+								"1",
+								"comments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get specific commetn base on id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\n    \"name\":\"Mani Movassagh\",\n    \"email\":\"mani@gmail.com\",\n    \"body\":\"I am Mani and comment on your post\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localhost}}/api/posts/1/comments/2",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"api",
+								"posts",
+								"1",
+								"comments",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get specific commetn base on id Exception Test",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\n    \"name\":\"Mani Movassagh\",\n    \"email\":\"mani@gmail.com\",\n    \"body\":\"I am Mani and comment on your post\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localhost}}/api/posts/1/comments/4345345",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"api",
+								"posts",
+								"1",
+								"comments",
+								"4345345"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update comment",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\n    \"name\":\"update Mani Movassagh\",\n    \"email\":\"mani@gmail.com\",\n    \"body\":\"I am Mani and update a  comment on your post\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localhost}}/api/posts/1/comments/2",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"api",
+								"posts",
+								"1",
+								"comments",
+								"2"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		}
