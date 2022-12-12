@@ -22,6 +22,12 @@ public class GlobalExceptionHandler {
     }
 
     //if you want to handle any more exception only copy the above post and replace the class name , All Done :)
+     //like the following sample
+    @ExceptionHandler(BlogApiException.class)
+    public ResponseEntity<ErrorDetails> handleResourceNotFoundException(BlogApiException exception, WebRequest request) {
+        ErrorDetails errorDetails = new ErrorDetails(new Date(), exception.getMessage(), request.getDescription(false));
+        return new ResponseEntity<>(errorDetails, HttpStatus.BAD_REQUEST);
+    }
 
     //global exception
 
