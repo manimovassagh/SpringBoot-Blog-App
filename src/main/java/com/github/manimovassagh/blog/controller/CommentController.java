@@ -3,6 +3,7 @@ package com.github.manimovassagh.blog.controller;
 
 import com.github.manimovassagh.blog.payload.CommentDto;
 import com.github.manimovassagh.blog.service.CommentService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +19,7 @@ public class CommentController {
     private final CommentService commentService;
 
     @PostMapping("/posts/{postId}/comments")
-    public ResponseEntity<CommentDto> createComment(@PathVariable(value = "postId") long postId, @RequestBody CommentDto commentDto) {
+    public ResponseEntity<CommentDto> createComment(@PathVariable(value = "postId") long postId,@Valid @RequestBody CommentDto commentDto) {
         return new ResponseEntity<CommentDto>(commentService.createComment(postId, commentDto), HttpStatus.CREATED);
     }
 
@@ -38,7 +39,7 @@ public class CommentController {
 
     @PutMapping("/posts/{postId}/comments/{commentId}")
     public ResponseEntity<CommentDto> updateComment(@PathVariable(value = "postId") Long postId
-            , @PathVariable(value = "commentId") Long commentId, @RequestBody CommentDto commentDto) {
+            , @PathVariable(value = "commentId") Long commentId,@Valid @RequestBody CommentDto commentDto) {
         CommentDto updatedComment = commentService.updateComment(postId, commentId, commentDto);
         return new ResponseEntity<>(updatedComment, HttpStatus.OK);
     }
