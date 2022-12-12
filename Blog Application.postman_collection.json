@@ -37,6 +37,33 @@
 					"response": []
 				},
 				{
+					"name": "Create new post Validation Check",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"title\":\"l\",\n\"description\":\"some test description\",\n\"content\":\"some contetnt\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localhost}}/api/posts",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"api",
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Get all Posts",
 					"request": {
 						"method": "GET",
@@ -328,6 +355,35 @@
 					"response": []
 				},
 				{
+					"name": "create comment validation check",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\n    \"name\":\"M\",\n    \"email\":\"manigmail.com\",\n    \"body\":\"I a\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localhost}}/api/posts/4/comments",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"api",
+								"posts",
+								"4",
+								"comments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "get all comments base on post Id",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
@@ -433,6 +489,36 @@
 						"body": {
 							"mode": "raw",
 							"raw": "{\n\n    \"name\":\"update Mani Movassagh\",\n    \"email\":\"mani@gmail.com\",\n    \"body\":\"I am Mani and update a  comment on your post\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localhost}}/api/posts/1/comments/2",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"api",
+								"posts",
+								"1",
+								"comments",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update comment validation check",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\n    \"name\":\"\",\n    \"email\":\"manigmail.com\",\n    \"body\":\"I \"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
