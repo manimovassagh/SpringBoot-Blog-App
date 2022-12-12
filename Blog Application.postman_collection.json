@@ -172,6 +172,25 @@
 					"response": []
 				},
 				{
+					"name": "Get Post By ID Gobal Exception check",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{localhost}}/api/posts/\"3\"",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"api",
+								"posts",
+								"\"3\""
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Get Post By ID Exception Check",
 					"request": {
 						"method": "GET",
@@ -410,6 +429,36 @@
 					"name": "update comment",
 					"request": {
 						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\n    \"name\":\"update Mani Movassagh\",\n    \"email\":\"mani@gmail.com\",\n    \"body\":\"I am Mani and update a  comment on your post\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localhost}}/api/posts/1/comments/2",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"api",
+								"posts",
+								"1",
+								"comments",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete comment Copy",
+					"request": {
+						"method": "DELETE",
 						"header": [],
 						"body": {
 							"mode": "raw",
