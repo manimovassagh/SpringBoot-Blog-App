@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.querydsl.QPageRequest;
 import org.springframework.stereotype.Service;
 
@@ -42,11 +43,11 @@ public class PostServiceImpl implements PostService {
 
 
     @Override
-    public PostResponse getAllPosts(int pageNo, int pageSize) {
+    public PostResponse getAllPosts(int pageNo, int pageSize,String sortBy) {
 
 
         // create Pageable instance
-        Pageable pageable = PageRequest.of(pageNo, pageSize);
+        Pageable pageable = PageRequest.of(pageNo,pageSize, Sort.by(sortBy));
 
         Page<Post> posts = postRepository.findAll(pageable);
 
