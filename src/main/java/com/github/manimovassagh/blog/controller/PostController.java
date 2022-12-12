@@ -30,11 +30,10 @@ public class PostController {
      * @return list of post DTO
      */
     @GetMapping
-    public PostResponse getAllPosts(
-            @RequestParam(value = "pageNo",defaultValue = "0",required = false)int pageNo
-            ,@RequestParam(value = "pageSize",defaultValue = "5",required = false)int pageSize,
-            @RequestParam(value = "sortByParam",defaultValue = "id",required = false) String sortBy) {
-        return postService.getAllPosts(pageNo,pageSize,sortBy);
+    public PostResponse getAllPosts(@RequestParam(value = "pageNo", defaultValue = "0", required = false) int pageNo
+            , @RequestParam(value = "pageSize", defaultValue = "5", required = false) int pageSize
+            , @RequestParam(value = "sortBy", defaultValue = "id", required = false) String sortBy) {
+        return postService.getAllPosts(pageNo, pageSize, sortBy);
     }
 
     @GetMapping("/{id}")
@@ -51,10 +50,10 @@ public class PostController {
 
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deletePostById(@PathVariable(name = "id")  long id) {
+    public ResponseEntity<String> deletePostById(@PathVariable(name = "id") long id) {
         postService.deletePostById(id);
         //another option to return response
-       // return new ResponseEntity<>("Post successfully delete with id Number ",HttpStatus.OK) ;
+        // return new ResponseEntity<>("Post successfully delete with id Number ",HttpStatus.OK) ;
         return ResponseEntity.ok("Post successfully delete with id Number " + id);
     }
 
