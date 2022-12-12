@@ -2,12 +2,14 @@ package com.github.manimovassagh.blog.service.impl;
 
 import com.github.manimovassagh.blog.entity.Comment;
 import com.github.manimovassagh.blog.entity.Post;
+import com.github.manimovassagh.blog.exception.BlogApiException;
 import com.github.manimovassagh.blog.exception.ResourceNotFoundException;
 import com.github.manimovassagh.blog.payload.CommentDto;
 import com.github.manimovassagh.blog.repository.CommentRepository;
 import com.github.manimovassagh.blog.repository.PostRepository;
 import com.github.manimovassagh.blog.service.CommentService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -50,10 +52,12 @@ public class CommentServiceImpl implements CommentService {
         Post post = postRepository.findById(postId).orElseThrow(() -> new ResourceNotFoundException("Post", "id", postId));
 
         //retrieve comment by ID
-        Comment comment=commentRepository.findById(commentId)
-                .orElseThrow(()->new ResourceNotFoundException("Comment","id",commentId));
-
-        return null;
+        Comment comment = commentRepository.findById(commentId)
+                .orElseThrow(() -> new ResourceNotFoundException("Comment", "id", commentId));
+        if (!comment.getPost().getId().equals(post.getId())) {
+            throw new BlogApiException(HttpStatus.BAD_REQUEST, "Comment does not belong to a post !!");
+        }
+        return mapToDto(comment);
     }
 
 
