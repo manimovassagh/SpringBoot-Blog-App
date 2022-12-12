@@ -9,6 +9,7 @@ import com.github.manimovassagh.blog.repository.CommentRepository;
 import com.github.manimovassagh.blog.repository.PostRepository;
 import com.github.manimovassagh.blog.service.CommentService;
 import lombok.RequiredArgsConstructor;
+import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +23,7 @@ public class CommentServiceImpl implements CommentService {
 
     private final CommentRepository commentRepository;
     private final PostRepository postRepository;
+    private final ModelMapper mapper;
 
     @Override
     public CommentDto createComment(long postId, CommentDto commentDto) {
@@ -98,22 +100,22 @@ public class CommentServiceImpl implements CommentService {
 
 
     private CommentDto mapToDto(Comment comment) {
-        CommentDto commentDto = new CommentDto();
-        commentDto.setId(comment.getId());
-        commentDto.setName(comment.getName());
-        commentDto.setBody(comment.getBody());
-        commentDto.setEmail(comment.getEmail());
+        CommentDto commentDto = mapper.map(comment, CommentDto.class);
+        // commentDto.setId(comment.getId());
+        //commentDto.setName(comment.getName());
+        //commentDto.setBody(comment.getBody());
+        //commentDto.setEmail(comment.getEmail());
 
         return commentDto;
     }
 
 
     private Comment mapToEntity(CommentDto commentDto) {
-        Comment comment = new Comment();
-        comment.setId(commentDto.getId());
-        comment.setName(commentDto.getName());
-        comment.setBody(commentDto.getBody());
-        comment.setEmail(commentDto.getEmail());
+        Comment comment = mapper.map(commentDto,Comment.class);
+       // comment.setId(commentDto.getId());
+        //comment.setName(commentDto.getName());
+        //comment.setBody(commentDto.getBody());
+        //comment.setEmail(commentDto.getEmail());
 
         return comment;
     }
