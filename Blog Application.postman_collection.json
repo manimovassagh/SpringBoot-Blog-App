@@ -172,7 +172,7 @@
 					"response": []
 				},
 				{
-					"name": "Get Post By ID EXCEPTION Check",
+					"name": "Get Post By ID Exception Check",
 					"request": {
 						"method": "GET",
 						"header": [],
