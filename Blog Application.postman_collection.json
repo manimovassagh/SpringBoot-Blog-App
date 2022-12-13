@@ -66,6 +66,9 @@
 				{
 					"name": "Get all Posts",
 					"request": {
+						"auth": {
+							"type": "noauth"
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
@@ -401,14 +404,14 @@
 							}
 						},
 						"url": {
-							"raw": "{{localhost}}/api/posts/1/comments",
+							"raw": "{{localhost}}/api/posts/4/comments",
 							"host": [
 								"{{localhost}}"
 							],
 							"path": [
 								"api",
 								"posts",
-								"1",
+								"4",
 								"comments"
 							]
 						}
@@ -433,16 +436,16 @@
 							}
 						},
 						"url": {
-							"raw": "{{localhost}}/api/posts/1/comments/2",
+							"raw": "{{localhost}}/api/posts/4/comments/5",
 							"host": [
 								"{{localhost}}"
 							],
 							"path": [
 								"api",
 								"posts",
-								"1",
+								"4",
 								"comments",
-								"2"
+								"5"
 							]
 						}
 					},
@@ -496,16 +499,16 @@
 							}
 						},
 						"url": {
-							"raw": "{{localhost}}/api/posts/1/comments/2",
+							"raw": "{{localhost}}/api/posts/4/comments/5",
 							"host": [
 								"{{localhost}}"
 							],
 							"path": [
 								"api",
 								"posts",
-								"1",
+								"4",
 								"comments",
-								"2"
+								"5"
 							]
 						}
 					},
