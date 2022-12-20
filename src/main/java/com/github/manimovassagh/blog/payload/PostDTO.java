@@ -5,11 +5,13 @@ import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 import lombok.NonNull;
+import lombok.extern.java.Log;
 
 import java.util.Set;
 
 
 @Data
+
 public class PostDTO {
 
     private Long id;

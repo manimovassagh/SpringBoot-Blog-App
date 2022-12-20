@@ -3,7 +3,7 @@ package com.github.manimovassagh.blog.controller;
 
 import com.github.manimovassagh.blog.payload.PostDTO;
 import com.github.manimovassagh.blog.payload.PostResponse;
-import com.github.manimovassagh.blog.service.PostService;
+import com.github.manimovassagh.blog.service.serviceInterface.PostService;
 import com.github.manimovassagh.blog.utils.AppConstants;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;

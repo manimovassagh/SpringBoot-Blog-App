@@ -5,7 +5,7 @@ import com.github.manimovassagh.blog.exception.ResourceNotFoundException;
 import com.github.manimovassagh.blog.payload.PostDTO;
 import com.github.manimovassagh.blog.payload.PostResponse;
 import com.github.manimovassagh.blog.repository.PostRepository;
-import com.github.manimovassagh.blog.service.PostService;
+import com.github.manimovassagh.blog.service.serviceInterface.PostService;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;

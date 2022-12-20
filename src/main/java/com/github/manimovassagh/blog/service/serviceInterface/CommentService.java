@@ -1,4 +1,4 @@
-package com.github.manimovassagh.blog.service;
+package com.github.manimovassagh.blog.service.serviceInterface;
 
 import com.github.manimovassagh.blog.payload.CommentDto;
 

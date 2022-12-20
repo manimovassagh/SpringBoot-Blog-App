@@ -7,7 +7,7 @@ import com.github.manimovassagh.blog.exception.ResourceNotFoundException;
 import com.github.manimovassagh.blog.payload.CommentDto;
 import com.github.manimovassagh.blog.repository.CommentRepository;
 import com.github.manimovassagh.blog.repository.PostRepository;
-import com.github.manimovassagh.blog.service.CommentService;
+import com.github.manimovassagh.blog.service.serviceInterface.CommentService;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
