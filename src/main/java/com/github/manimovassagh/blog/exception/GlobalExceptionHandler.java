@@ -30,7 +30,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
     }
 
     //if you want to handle any more exception only copy the above post and replace the class name , All Done :)
-     //like the following sample
+    //like the following sample
     @ExceptionHandler(BlogApiException.class)
     public ResponseEntity<ErrorDetails> handleResourceNotFoundException(BlogApiException exception, WebRequest request) {
         ErrorDetails errorDetails = new ErrorDetails(new Date(), exception.getMessage(), request.getDescription(false));
@@ -47,17 +47,19 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
     @Nullable
     @Override
-    protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatusCode status, WebRequest request) {
+    protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex
+            , HttpHeaders headers
+            , HttpStatusCode status
+            , WebRequest request) {
         Map<String, String> errors = new HashMap<>();
-        ex.getBindingResult().getAllErrors().forEach((error) ->{
-            String fieldName = ((FieldError)error).getField();
+        ex.getBindingResult().getAllErrors().forEach((error) -> {
+            String fieldName = ((FieldError) error).getField();
             String message = error.getDefaultMessage();
             errors.put(fieldName, message);
         });
 
         return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
     }
-
 
 
 }
