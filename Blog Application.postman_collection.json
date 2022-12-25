@@ -12,11 +12,14 @@
 				{
 					"name": "Create new post",
 					"request": {
+						"auth": {
+							"type": "noauth"
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\"title\":\"first title\",\n\"description\":\"some test description\",\n\"content\":\"some contetnt\"\n}",
+							"raw": "{\n\"title\":\"{{$randomFirstName}}\",\n\"description\":\"how to make spring boot with initializer\",\n\"content\":\"contentn of my blog\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -67,7 +70,19 @@
 					"name": "Get all Posts",
 					"request": {
 						"auth": {
-							"type": "noauth"
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "mmmmmm",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "mani",
+									"type": "string"
+								}
+							]
 						},
 						"method": "GET",
 						"header": [],
@@ -318,6 +333,122 @@
 								"api",
 								"posts",
 								"14"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Auth admin",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "accessTokenUrl",
+									"value": "http://localhost:8080/realms/blogrealm/protocol/openid-connect/token",
+									"type": "string"
+								},
+								{
+									"key": "clientId",
+									"value": "maniblog",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "mmmmmm",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "mani",
+									"type": "string"
+								},
+								{
+									"key": "grant_type",
+									"value": "password_credentials",
+									"type": "string"
+								},
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/realms/blogrealm/protocol/openid-connect/token",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"realms",
+								"blogrealm",
+								"protocol",
+								"openid-connect",
+								"token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Auth user",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "accessTokenUrl",
+									"value": "http://localhost:8080/realms/blogrealm/protocol/openid-connect/token",
+									"type": "string"
+								},
+								{
+									"key": "clientId",
+									"value": "maniblog",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "mmmmmm",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "mani",
+									"type": "string"
+								},
+								{
+									"key": "grant_type",
+									"value": "password_credentials",
+									"type": "string"
+								},
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/realms/blogrealm/protocol/openid-connect/token",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"realms",
+								"blogrealm",
+								"protocol",
+								"openid-connect",
+								"token"
 							]
 						}
 					},
