@@ -27,7 +27,6 @@ public class SecurityConfig {
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf().disable()
                 .authorizeHttpRequests(authorize ->
-
                         authorize.requestMatchers(HttpMethod.GET, "/api/**")
                                 .permitAll().anyRequest().authenticated())
                 .httpBasic(Customizer.withDefaults());
@@ -39,7 +38,7 @@ public class SecurityConfig {
         UserDetails mani = User.builder()
                 .username("mani")
                 .password(passwordEncoder().encode("mmmmmm"))
-                .roles("User").build();
+                .roles("USER").build();
 
         UserDetails admin = User.builder()
                 .username("admin")
