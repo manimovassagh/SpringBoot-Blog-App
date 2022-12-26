@@ -17,16 +17,12 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/")
 public class CommentController implements CommentControllerInterface {
-
-
-
     private final CommentService commentService;
-
 
     @Override
     @PostMapping("/posts/{postId}/comments")
     public ResponseEntity<CommentDto> createComment(@PathVariable(value = "postId") long postId, @Valid @RequestBody CommentDto commentDto) {
-        return new ResponseEntity<CommentDto>(commentService.createComment(postId, commentDto), HttpStatus.CREATED);
+        return new ResponseEntity<>(commentService.createComment(postId, commentDto), HttpStatus.CREATED);
     }
 
     @Override
@@ -34,7 +30,6 @@ public class CommentController implements CommentControllerInterface {
     public List<CommentDto> getCommentsByPostId(@PathVariable(value = "postId") long postId) {
         log.info("Test some log");
         return commentService.getCommentsByPostId(postId);
-
     }
 
 
@@ -43,7 +38,6 @@ public class CommentController implements CommentControllerInterface {
     public ResponseEntity<CommentDto> getCommentById(@PathVariable(value = "postId") Long postId
             , @PathVariable(value = "commentId") Long commentId) {
         return new ResponseEntity<>(commentService.getCommentById(postId, commentId), HttpStatus.OK);
-
     }
 
 
@@ -61,6 +55,5 @@ public class CommentController implements CommentControllerInterface {
         commentService.deleteComment(postId, commentId);
         return new ResponseEntity<>("Comment deleted successfully ", HttpStatus.OK);
     }
-
 
 }
