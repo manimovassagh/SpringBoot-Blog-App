@@ -1,6 +1,5 @@
 package com.github.manimovassagh.blog.controller;
 
-
 import com.github.manimovassagh.blog.payload.CommentDto;
 import com.github.manimovassagh.blog.service.serviceInterface.CommentService;
 import jakarta.validation.Valid;

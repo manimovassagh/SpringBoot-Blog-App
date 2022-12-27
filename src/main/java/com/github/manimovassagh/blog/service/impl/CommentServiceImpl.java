@@ -59,8 +59,6 @@ public class CommentServiceImpl implements CommentService {
     public CommentDto updateComment(Long postId, Long commentId, CommentDto commentRequest) {
         //retrieve Post Entity base on ID
         Comment comment = getComment(postId, commentId);
-
-
         comment.setName(commentRequest.getName());
         comment.setBody(commentRequest.getBody());
         comment.setEmail(commentRequest.getEmail());

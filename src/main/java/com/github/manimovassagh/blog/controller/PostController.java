@@ -7,11 +7,13 @@ import com.github.manimovassagh.blog.service.serviceInterface.PostService;
 import com.github.manimovassagh.blog.utils.AppConstants;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.java.Log;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+@Log
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/posts")
@@ -38,7 +40,12 @@ public class PostController {
      @RequestParam(value = "pageSize", defaultValue = AppConstants.DEFAULT_PAGE_SIZE, required = false) int pageSize,
      @RequestParam(value = "sortBy", defaultValue = AppConstants.DEFAULT_SORT_BY, required = false) String sortBy,
      @RequestParam(value = "sortDir", defaultValue = AppConstants.DEFAULT_SORT_DIRECTION, required = false) String sortDir) {
+
+        log.info("Function is start to fire");
         return postService.getAllPosts(pageNo, pageSize, sortBy, sortDir);
+
+
+
     }
 
 
