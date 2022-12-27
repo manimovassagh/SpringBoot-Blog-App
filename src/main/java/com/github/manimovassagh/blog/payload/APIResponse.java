@@ -2,6 +2,7 @@ package com.github.manimovassagh.blog.payload;
 
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.github.manimovassagh.blog.utils.SuccessFail;
 import lombok.*;
 
 import java.util.List;
@@ -15,7 +16,7 @@ import java.util.List;
 @Getter
 @Setter
 public class APIResponse <T>{
-    private String status;
+    private SuccessFail status;
     private List<RuntimeException> errors;
     private T result;
 }
