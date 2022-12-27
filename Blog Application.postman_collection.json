@@ -100,6 +100,38 @@
 					"response": []
 				},
 				{
+					"name": "Get all Posts Testy with response Class",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "mmmmmm",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "mani",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{localhost}}/testy",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"testy"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Get all Posts sorting",
 					"request": {
 						"method": "GET",
