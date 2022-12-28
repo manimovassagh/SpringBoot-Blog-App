@@ -5,6 +5,7 @@ import com.github.manimovassagh.blog.payload.PostDTO;
 import com.github.manimovassagh.blog.payload.PostResponse;
 import com.github.manimovassagh.blog.service.serviceInterface.PostService;
 import com.github.manimovassagh.blog.utils.AppConstants;
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.java.Log;
@@ -33,7 +34,7 @@ public class PostController {
      *
      * @return list of post DTO
      */
-    @PreAuthorize("hasRole('USER')")
+
     @GetMapping
     public PostResponse getAllPosts
     (@RequestParam(value = "pageNo", defaultValue = AppConstants.DEFAULT_PAGE_NUMBER, required = false) int pageNo,
@@ -49,20 +50,21 @@ public class PostController {
     }
 
 
-    @PreAuthorize("hasRole('USER')")
+
     @GetMapping("/{id}")
     public ResponseEntity<PostDTO> getPostById(@PathVariable(name = "id") long postId) {
         return ResponseEntity.ok(postService.getPostById(postId));
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
+
+
+    @RolesAllowed("ADMIN")
     @PutMapping("/{id}")
     public ResponseEntity<PostDTO> updatePost(@Valid @RequestBody PostDTO postDTO, @PathVariable(name = "id") long id) {
 
         return ResponseEntity.ok(postService.updatePost(postDTO, id));
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deletePostById(@PathVariable(name = "id") long id) {
         postService.deletePostById(id);
