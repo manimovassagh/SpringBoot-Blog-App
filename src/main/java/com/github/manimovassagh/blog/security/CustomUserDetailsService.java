@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
 public class CustomUserDetailsService implements UserDetailsService {
     private final UserRepository userRepository;
 
-    //some comment to test
+
     @Override
     public UserDetails loadUserByUsername(String userNameOrEmail) throws UsernameNotFoundException {
         User user = userRepository.findByUsernameOrEmail(userNameOrEmail, userNameOrEmail)
