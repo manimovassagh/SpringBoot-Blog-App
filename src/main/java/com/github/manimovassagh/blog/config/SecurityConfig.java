@@ -54,6 +54,6 @@ public class SecurityConfig {
 //                            .password(passwordEncoder().encode("admin"))
 //                            .roles("ADMIN").build();
 //                    return new InMemoryUserDetailsManager(mani, admin);
-//                }
+//               }
 
 }
