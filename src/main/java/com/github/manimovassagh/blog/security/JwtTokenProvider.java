@@ -1,11 +1,12 @@
 package com.github.manimovassagh.blog.security;
 
 
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.Jwts;
+import com.github.manimovassagh.blog.exception.BlogApiException;
+import io.jsonwebtoken.*;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
 
@@ -48,6 +49,30 @@ public class JwtTokenProvider {
                 .getBody();
         String username = claims.getSubject();
         return username;
+    }
+
+
+    /**
+     * validate Jwt token
+     * @param token
+     * @return token validation result
+     */
+    public boolean validateToken(String token){
+        try{
+            Jwts.parserBuilder()
+                    .setSigningKey(key())
+                    .build()
+                    .parse(token);
+            return true;
+        } catch (MalformedJwtException ex) {
+            throw new BlogApiException(HttpStatus.BAD_REQUEST, "Invalid JWT token");
+        } catch (ExpiredJwtException ex) {
+            throw new BlogApiException(HttpStatus.BAD_REQUEST, "Expired JWT token");
+        } catch (UnsupportedJwtException ex) {
+            throw new BlogApiException(HttpStatus.BAD_REQUEST, "Unsupported JWT token");
+        } catch (IllegalArgumentException ex) {
+            throw new BlogApiException(HttpStatus.BAD_REQUEST, "JWT claims string is empty.");
+        }
     }
 
 }
