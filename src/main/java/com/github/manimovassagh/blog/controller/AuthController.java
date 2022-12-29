@@ -2,6 +2,7 @@ package com.github.manimovassagh.blog.controller;
 
 
 import com.github.manimovassagh.blog.payload.LoginDto;
+import com.github.manimovassagh.blog.payload.RegisterDto;
 import com.github.manimovassagh.blog.service.serviceInterface.AuthService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -25,4 +26,12 @@ public ResponseEntity<String> login(@RequestBody LoginDto loginDto){
     //return ResponseEntity.ok(response);
 }
 
+
+    //build register Rest Api
+    @PostMapping(value = {"register","signup"})
+    public  ResponseEntity<String> register(@RequestBody RegisterDto registerDto){
+        String response = authService.register(registerDto);
+        return new ResponseEntity<>(response, HttpStatus.CREATED);
+
+    }
 }

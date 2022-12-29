@@ -804,7 +804,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"usernameOrEmail\":\"mani.mgh@gmail.com\",\n    \"password\":\"mmmmmm\"\n}",
+							"raw": "{\n    \"usernameOrEmail\":\"saharmora@gmail.com\",\n    \"password\":\"ssssss\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -820,6 +820,90 @@
 								"api",
 								"auth",
 								"signin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"mehdi\",\n    \"username\":\"mehdi\",\n    \"email\":\"mehdi@gmail.com\",\n    \"password\":\"pppppp\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localhost}}/api/auth/register",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Signup",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"ali\",\n    \"username\":\"ali\",\n    \"email\":\"ali@gmail.com\",\n    \"password\":\"aaaaaa\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localhost}}/api/auth/signup",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User Already Exist",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"ali\",\n    \"username\":\"ali\",\n    \"email\":\"ali@gmail.com\",\n    \"password\":\"aaaaaa\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localhost}}/api/auth/signup",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"signup"
 							]
 						}
 					},
