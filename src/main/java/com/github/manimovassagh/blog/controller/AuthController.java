@@ -1,10 +1,10 @@
 package com.github.manimovassagh.blog.controller;
 
 
+import com.github.manimovassagh.blog.payload.JwtAuthResponse;
 import com.github.manimovassagh.blog.payload.LoginDto;
 import com.github.manimovassagh.blog.payload.RegisterDto;
 import com.github.manimovassagh.blog.service.serviceInterface.AuthService;
-import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,17 +13,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequiredArgsConstructor
 @RequestMapping("/api/auth")
 public class AuthController {
-private final AuthService authService;
+    private AuthService authService;
 
-
+    public AuthController(AuthService authService) {
+        this.authService = authService;
+    }
 @PostMapping(value = {"login","signin"})
-public ResponseEntity<String> login(@RequestBody LoginDto loginDto){
-    String response = authService.login(loginDto);
-    return new ResponseEntity<>( response,HttpStatus.OK);
-    //return ResponseEntity.ok(response);
+public ResponseEntity<JwtAuthResponse> login(@RequestBody LoginDto loginDto){
+    String token = authService.login(loginDto);
+
+    JwtAuthResponse jwtAuthResponse = new JwtAuthResponse();
+    jwtAuthResponse.setAccessToken(token);
+
+    return ResponseEntity.ok(jwtAuthResponse);
+
 }
 
 

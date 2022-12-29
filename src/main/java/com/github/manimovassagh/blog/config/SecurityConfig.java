@@ -1,21 +1,33 @@
 package com.github.manimovassagh.blog.config;
 
-import lombok.RequiredArgsConstructor;
+import com.github.manimovassagh.blog.security.JwtAuthenticationEntryPoint;
+import com.github.manimovassagh.blog.security.JwtAuthenticationFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
-@RequiredArgsConstructor
 public class SecurityConfig {
     private UserDetailsService userDetailsService;
+    private final JwtAuthenticationEntryPoint authenticationEntryPoint;
+    private final JwtAuthenticationFilter jwtAuthenticationFilter;
+
+    public SecurityConfig(UserDetailsService userDetailsService
+            , JwtAuthenticationEntryPoint authenticationEntryPoint
+            , JwtAuthenticationFilter jwtAuthenticationFilter) {
+        this.userDetailsService = userDetailsService;
+        this.authenticationEntryPoint = authenticationEntryPoint;
+        this.jwtAuthenticationFilter = jwtAuthenticationFilter;
+    }
 
     @Bean
     static PasswordEncoder passwordEncoder() {
@@ -37,23 +49,12 @@ public class SecurityConfig {
                                 .permitAll()
                                 .requestMatchers("/api/auth/**")
                                 .permitAll()
-                                .anyRequest().authenticated());
-
+                                .anyRequest().authenticated())
+                .exceptionHandling(exception -> exception.authenticationEntryPoint(authenticationEntryPoint))
+                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
+        http.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
         return http.build();
     }
 
-//                @Bean
-//                UserDetailsService userDetailsService() {
-//                    UserDetails mani = User.builder()
-//                            .username("mani")
-//                            .password(passwordEncoder().encode("mmmmmm"))
-//                            .roles("USER").build();
-//
-//                    UserDetails admin = User.builder()
-//                            .username("admin")
-//                            .password(passwordEncoder().encode("admin"))
-//                            .roles("ADMIN").build();
-//                    return new InMemoryUserDetailsManager(mani, admin);
-//               }
 
 }
