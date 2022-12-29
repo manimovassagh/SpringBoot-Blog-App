@@ -301,7 +301,7 @@
 					"response": []
 				},
 				{
-					"name": "Get Post By ID  V2",
+					"name": "Get Post By ID  V2  (with Tags)",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -315,6 +315,31 @@
 								"v2",
 								"posts",
 								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Post By ID  V2  use params (with Tags)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{localhost}}/api/posts/3?version=2",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"api",
+								"posts",
+								"3"
+							],
+							"query": [
+								{
+									"key": "version",
+									"value": "2"
+								}
 							]
 						}
 					},
