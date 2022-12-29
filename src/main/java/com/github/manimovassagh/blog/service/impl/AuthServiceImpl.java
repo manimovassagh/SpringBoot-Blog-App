@@ -1,5 +1,6 @@
 package com.github.manimovassagh.blog.service.impl;
 
+
 import com.github.manimovassagh.blog.entity.Role;
 import com.github.manimovassagh.blog.entity.User;
 import com.github.manimovassagh.blog.exception.BlogApiException;
@@ -21,9 +22,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Service
-
 public class AuthServiceImpl implements AuthService {
-
 
     private AuthenticationManager authenticationManager;
     private UserRepository userRepository;
@@ -32,50 +31,57 @@ public class AuthServiceImpl implements AuthService {
     private JwtTokenProvider jwtTokenProvider;
 
 
-    public AuthServiceImpl(AuthenticationManager authenticationManager
-            , UserRepository userRepository
-            , RoleRepository roleRepository
-            , PasswordEncoder passwordEncoder
-            , JwtTokenProvider tokenProvider) {
+    public AuthServiceImpl(AuthenticationManager authenticationManager,
+                           UserRepository userRepository,
+                           RoleRepository roleRepository,
+                           PasswordEncoder passwordEncoder,
+                           JwtTokenProvider jwtTokenProvider) {
         this.authenticationManager = authenticationManager;
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
         this.passwordEncoder = passwordEncoder;
-        this.jwtTokenProvider = tokenProvider;
+        this.jwtTokenProvider = jwtTokenProvider;
     }
 
     @Override
     public String login(LoginDto loginDto) {
-        Authentication authentication = authenticationManager
-                .authenticate(new UsernamePasswordAuthenticationToken(loginDto.getUsernameOrEmail()
-                        , loginDto.getPassword()));
+
+        Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
+                loginDto.getUsernameOrEmail(), loginDto.getPassword()));
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
+
         String token = jwtTokenProvider.generateToken(authentication);
+
         return token;
     }
 
     @Override
     public String register(RegisterDto registerDto) {
-        //ADD CHECK FOR USERNAME
-        if (userRepository.existsByUsername(registerDto.getUsername())) {
-            throw new BlogApiException(HttpStatus.BAD_REQUEST, "Username is already exist");
-        }
-        //add check for email exist in database
-        if (userRepository.existsByEmail(registerDto.getUsername())) {
-            throw new BlogApiException(HttpStatus.BAD_REQUEST, "Email is already exist");
-        }
-        User user = User.builder()
-                .name(registerDto.getName())
-                .username(registerDto.getUsername())
-                .email(registerDto.getEmail()).password(passwordEncoder.encode(registerDto.getPassword())).build();
-        Set<Role> roles = new HashSet<>();
 
+        // add check for username exists in database
+        if(userRepository.existsByUsername(registerDto.getUsername())){
+            throw new BlogApiException(HttpStatus.BAD_REQUEST, "Username is already exists!.");
+        }
+
+        // add check for email exists in database
+        if(userRepository.existsByEmail(registerDto.getEmail())){
+            throw new BlogApiException(HttpStatus.BAD_REQUEST, "Email is already exists!.");
+        }
+
+        User user = new User();
+        user.setName(registerDto.getName());
+        user.setUsername(registerDto.getUsername());
+        user.setEmail(registerDto.getEmail());
+        user.setPassword(passwordEncoder.encode(registerDto.getPassword()));
+
+        Set<Role> roles = new HashSet<>();
         Role userRole = roleRepository.findByName("ROLE_USER").get();
         roles.add(userRole);
         user.setRoles(roles);
+
         userRepository.save(user);
 
-        return "User Registered Successfully !!!";
+        return "User registered successfully!.";
     }
 }

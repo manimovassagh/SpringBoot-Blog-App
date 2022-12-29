@@ -13,16 +13,48 @@
 					"name": "Create new post",
 					"request": {
 						"auth": {
-							"type": "basic",
-							"basic": [
+							"type": "bearer",
+							"bearer": [
 								{
-									"key": "password",
-									"value": "mmmmmm",
+									"key": "token",
+									"value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJtYW5pLm1naEBnbWFpbC5jb20iLCJpYXQiOjE2NzIzMzM4MjIsImV4cCI6MTY3MjkzODYyMn0.81Drn6_lwQaaAP5OMsmTjPlnj-ZkgwAJ4svhUEtvUGfK-d8EVFwnx6FmuZ93kHov",
 									"type": "string"
-								},
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"title\":\"{{$randomFirstName}}\",\n\"description\":\"how to make spring boot with initializer\",\n\"content\":\"contentn of my blog\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localhost}}/api/posts",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"api",
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create new post with Bearer Token",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
 								{
-									"key": "username",
-									"value": "mani.mgh",
+									"key": "token",
+									"value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJzYWhhcm1vcmFAZ21haWwuY29tIiwiaWF0IjoxNjcyMzMwMDMzLCJleHAiOjE2NzI5MzQ4MzN9.JC03s36O7CBtLt8pnh9u_sZgC7OlMnI9TVoFtYNUfFkXXzcw1sRttaG8NNYB9icn",
 									"type": "string"
 								}
 							]
@@ -776,7 +808,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"usernameOrEmail\":\"mani.mgh@gmail.com\",\n    \"password\":\"mmmmmm\"\n}",
+							"raw": "{\n    \"usernameOrEmail\":\"ali\",\n    \"password\":\"aaaaaa\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"

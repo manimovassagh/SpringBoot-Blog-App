@@ -1,6 +1,5 @@
 package com.github.manimovassagh.blog.security;
 
-
 import com.github.manimovassagh.blog.exception.BlogApiException;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.io.Decoders;
@@ -16,47 +15,47 @@ import java.util.Date;
 @Component
 public class JwtTokenProvider {
 
-
     @Value("${app.jwt-secret}")
     private String jwtSecret;
+
     @Value("${app-jwt-expiration-milliseconds}")
     private long jwtExpirationDate;
 
-
-    //generate Jwt Token
-    public String generateToken(Authentication authentication) {
+    // generate JWT token
+    public String generateToken(Authentication authentication){
         String username = authentication.getName();
+
         Date currentDate = new Date();
-        Date expirationDate = new Date(currentDate.getTime() + jwtExpirationDate);
-        String token = Jwts.builder().setSubject(username)
-                .setIssuedAt(new Date()).setExpiration(expirationDate)
-                .signWith(key()).compact();
+
+        Date expireDate = new Date(currentDate.getTime() + jwtExpirationDate);
+
+        String token = Jwts.builder()
+                .setSubject(username)
+                .setIssuedAt(new Date())
+                .setExpiration(expireDate)
+                .signWith(key())
+                .compact();
         return token;
-
     }
 
-    private Key key() {
-        return Keys.hmacShaKeyFor(Decoders.BASE64.decode(jwtSecret));
+    private Key key(){
+        return Keys.hmacShaKeyFor(
+                Decoders.BASE64.decode(jwtSecret)
+        );
     }
 
-
-    //get username from Jwt token
+    // get username from Jwt token
     public String getUsername(String token){
-      Claims claims= Jwts.parserBuilder()
+        Claims claims = Jwts.parserBuilder()
                 .setSigningKey(key())
                 .build()
-                .parseClaimsJwt(token)
+                .parseClaimsJws(token)
                 .getBody();
         String username = claims.getSubject();
         return username;
     }
 
-
-    /**
-     * validate Jwt token
-     * @param token
-     * @return token validation result
-     */
+    // validate Jwt token
     public boolean validateToken(String token){
         try{
             Jwts.parserBuilder()
@@ -74,5 +73,4 @@ public class JwtTokenProvider {
             throw new BlogApiException(HttpStatus.BAD_REQUEST, "JWT claims string is empty.");
         }
     }
-
 }
