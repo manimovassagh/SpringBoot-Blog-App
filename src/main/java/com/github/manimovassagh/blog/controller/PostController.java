@@ -50,6 +50,20 @@ public class PostController {
     }
 
 
+    /**
+     * versioning with gitHub style sample for version 4
+     * @param id
+     * @return
+     */
+    @GetMapping(value = "/api/posts/{id}",produces = "application/vnd.mani.v4+json")
+    public ResponseEntity<PostDTO> getPostByIdWithGithubVersion(@PathVariable(name = "id") long id){
+        return ResponseEntity.ok(postService.getPostById(id));
+    }
+
+
+
+
+
     // get post by id
     @GetMapping("/api/v2/posts/{id}")
     public ResponseEntity<PostDtoV2> getPostByIdV2(@PathVariable(name = "id") long id){
