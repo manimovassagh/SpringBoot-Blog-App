@@ -34,12 +34,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{localhost}}/api/posts",
+							"raw": "{{localhost}}/api/v1/posts",
 							"host": [
 								"{{localhost}}"
 							],
 							"path": [
 								"api",
+								"v1",
 								"posts"
 							]
 						}
@@ -71,12 +72,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{localhost}}/api/posts",
+							"raw": "{{localhost}}/api/v1/posts",
 							"host": [
 								"{{localhost}}"
 							],
 							"path": [
 								"api",
+								"v1",
 								"posts"
 							]
 						}
@@ -98,12 +100,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{localhost}}/api/posts",
+							"raw": "{{localhost}}/api/v1/posts",
 							"host": [
 								"{{localhost}}"
 							],
 							"path": [
 								"api",
+								"v1",
 								"posts"
 							]
 						}
@@ -131,12 +134,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{localhost}}/api/posts",
+							"raw": "{{localhost}}/api/v1/posts",
 							"host": [
 								"{{localhost}}"
 							],
 							"path": [
 								"api",
+								"v1",
 								"posts"
 							]
 						}
@@ -181,12 +185,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{localhost}}/api/posts?pageNo=0&pageSize=45&sortBy=title",
+							"raw": "{{localhost}}/api/v1/posts?pageNo=0&pageSize=45&sortBy=title",
 							"host": [
 								"{{localhost}}"
 							],
 							"path": [
 								"api",
+								"v1",
 								"posts"
 							],
 							"query": [
@@ -213,12 +218,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{localhost}}/api/posts?pageNo=0&pageSize=45&sortBy=title&sortDir=desc",
+							"raw": "{{localhost}}/api/v1/posts?pageNo=0&pageSize=45&sortBy=title&sortDir=desc",
 							"host": [
 								"{{localhost}}"
 							],
 							"path": [
 								"api",
+								"v1",
 								"posts"
 							],
 							"query": [
@@ -251,12 +257,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{localhost}}/api/posts?pageNo=5&pageSize=5",
+							"raw": "{{localhost}}/api/v1/posts?pageNo=5&pageSize=5",
 							"host": [
 								"{{localhost}}"
 							],
 							"path": [
 								"api",
+								"v1",
 								"posts"
 							],
 							"query": [
@@ -279,12 +286,33 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{localhost}}/api/posts/3",
+							"raw": "{{localhost}}/api/v1/posts/3",
 							"host": [
 								"{{localhost}}"
 							],
 							"path": [
 								"api",
+								"v1",
+								"posts",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Post By ID  V2",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{localhost}}/api/v2/posts/3",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"api",
+								"v2",
 								"posts",
 								"3"
 							]
@@ -298,12 +326,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{localhost}}/api/posts/\"3\"",
+							"raw": "{{localhost}}/api/v1/posts/\"3\"",
 							"host": [
 								"{{localhost}}"
 							],
 							"path": [
 								"api",
+								"v1",
 								"posts",
 								"\"3\""
 							]
@@ -317,12 +346,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{localhost}}/api/posts/3342342",
+							"raw": "{{localhost}}/api/v1/posts/3342342",
 							"host": [
 								"{{localhost}}"
 							],
 							"path": [
 								"api",
+								"v1",
 								"posts",
 								"3342342"
 							]
@@ -334,16 +364,11 @@
 					"name": "update post By id",
 					"request": {
 						"auth": {
-							"type": "basic",
-							"basic": [
+							"type": "bearer",
+							"bearer": [
 								{
-									"key": "username",
-									"value": "mani.mgh",
-									"type": "string"
-								},
-								{
-									"key": "password",
-									"value": "mmmmmm",
+									"key": "token",
+									"value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJtYW5pLm1naEBnbWFpbC5jb20iLCJpYXQiOjE2NzIzNTA5MDYsImV4cCI6MTY3Mjk1NTcwNn0.9wUU6p230_MPqR-Y2a5SsMZ2ZzOqbciNvvjAPQlTC7uApCZPEOvZAcuacWAi5GOE",
 									"type": "string"
 								}
 							]
@@ -352,7 +377,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"id\": 3,\n    \"title\": \"updated\",\n    \"description\": \"updated\",\n    \"content\": \"updated\"\n}",
+							"raw": "{\n    \"id\": 3,\n    \"title\": \"updated\",\n    \"description\": \"updated some more description\",\n    \"content\": \"updated\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -360,12 +385,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{localhost}}/api/posts/3",
+							"raw": "{{localhost}}/api/v1/posts/3",
 							"host": [
 								"{{localhost}}"
 							],
 							"path": [
 								"api",
+								"v1",
 								"posts",
 								"3"
 							]
@@ -388,12 +414,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{localhost}}/api/posts/334234234234234",
+							"raw": "{{localhost}}/api/v1/posts/334234234234234",
 							"host": [
 								"{{localhost}}"
 							],
 							"path": [
 								"api",
+								"v1",
 								"posts",
 								"334234234234234"
 							]
@@ -416,12 +443,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{localhost}}/api/posts/14",
+							"raw": "{{localhost}}/api/v1/posts/14",
 							"host": [
 								"{{localhost}}"
 							],
 							"path": [
 								"api",
+								"v1",
 								"posts",
 								"14"
 							]
@@ -830,7 +858,35 @@
 					"response": []
 				},
 				{
-					"name": "Sign In",
+					"name": "Sign In with admin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"usernameOrEmail\":\"saharmora@gmail.com\",\n    \"password\":\"ssssss\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localhost}}/api/auth/signin",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"signin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Sign In with Role user",
 					"request": {
 						"method": "POST",
 						"header": [],
