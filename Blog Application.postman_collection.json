@@ -13,7 +13,19 @@
 					"name": "Create new post",
 					"request": {
 						"auth": {
-							"type": "noauth"
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "mmmmmm",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "mani.mgh",
+									"type": "string"
+								}
+							]
 						},
 						"method": "POST",
 						"header": [],
@@ -79,7 +91,7 @@
 								},
 								{
 									"key": "username",
-									"value": "mani",
+									"value": "mani.mgh",
 									"type": "string"
 								}
 							]
@@ -289,6 +301,21 @@
 				{
 					"name": "update post By id",
 					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "mani.mgh",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "mmmmmm",
+									"type": "string"
+								}
+							]
+						},
 						"method": "PUT",
 						"header": [],
 						"body": {
@@ -732,6 +759,67 @@
 								"1",
 								"comments",
 								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"usernameOrEmail\":\"mani.mgh@gmail.com\",\n    \"password\":\"mmmmmm\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localhost}}/api/auth/login",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Sign In",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"usernameOrEmail\":\"mani.mgh@gmail.com\",\n    \"password\":\"mmmmmm\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localhost}}/api/auth/signin",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"signin"
 							]
 						}
 					},
