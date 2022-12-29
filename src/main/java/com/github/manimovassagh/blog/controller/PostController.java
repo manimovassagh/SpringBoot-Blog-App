@@ -71,7 +71,7 @@ public class PostController {
 
     }
 
-    // get post by id
+    // get post by id with parameter versioning
     @GetMapping(value = "/api/posts/{id}",params = "version=2")
     public ResponseEntity<PostDtoV2> getPostByIdV2WithParams(@PathVariable(name = "id") long id){
 
@@ -89,6 +89,25 @@ public class PostController {
         postDtoV2.setTags(tags);
         return ResponseEntity.ok(postDtoV2);
 
+    }
+
+    // get post by id with header versioning
+    @GetMapping(value = "/api/posts/{id}",headers = "X-API-VERSION=3")
+    public ResponseEntity<PostDtoV2> getPostByIdV2WithHeaderVersioning(@PathVariable(name = "id") long id){
+
+        PostDTO postDto = postService.getPostById(id);
+        PostDtoV2 postDtoV2 = new PostDtoV2();
+        postDtoV2.setId(postDto.getId());
+        postDtoV2.setTitle(postDto.getTitle());
+        postDtoV2.setComments(postDto.getComments());
+        postDtoV2.setContent(postDto.getContent());
+        postDtoV2.setDescription(postDto.getDescription());
+        List<String> tags = new ArrayList<>();
+        tags.add("Java");
+        tags.add("Spring boot");
+        tags.add("AWS");
+        postDtoV2.setTags(tags);
+        return ResponseEntity.ok(postDtoV2);
 
     }
 
