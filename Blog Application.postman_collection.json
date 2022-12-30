@@ -301,6 +301,32 @@
 					"response": []
 				},
 				{
+					"name": "Search Post By Title or Description",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{localhost}}/api/v1/posts/search?query=updated",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"posts",
+								"search"
+							],
+							"query": [
+								{
+									"key": "query",
+									"value": "updated"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Get Post By ID  V2  (with Tags)",
 					"request": {
 						"method": "GET",
