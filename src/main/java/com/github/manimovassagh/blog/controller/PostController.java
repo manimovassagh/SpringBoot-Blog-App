@@ -1,6 +1,7 @@
 package com.github.manimovassagh.blog.controller;
 
 
+import com.github.manimovassagh.blog.entity.Post;
 import com.github.manimovassagh.blog.payload.PostDTO;
 import com.github.manimovassagh.blog.payload.PostDtoV2;
 import com.github.manimovassagh.blog.payload.PostResponse;
@@ -143,6 +144,14 @@ public class PostController {
         postService.deletePostById(id);
 
         return new ResponseEntity<>("Post entity deleted successfully.", HttpStatus.OK);
+    }
+
+
+
+    @GetMapping("/api/v1/posts/search")
+    public ResponseEntity<List<Post>> searchPost(@RequestParam String query) {
+       List<Post> posts= postService.searchPost(query);
+        return new ResponseEntity<>(posts, HttpStatus.OK);
     }
 }
 
