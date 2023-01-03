@@ -7,17 +7,205 @@
 	},
 	"item": [
 		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"usernameOrEmail\":\"ali\",\n    \"password\":\"aaaaaa\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localhost}}/api/auth/login",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Sign In with admin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"usernameOrEmail\":\"mani.mgh@gmail.com\",\n    \"password\":\"mmmmmm\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localhost}}/api/v1/auth/signin",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"signin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Sign In with Role user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"usernameOrEmail\":\"saharmora@gmail.com\",\n    \"password\":\"ssssss\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localhost}}/api/auth/signin",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"signin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"mehdi\",\n    \"username\":\"mehdi\",\n    \"email\":\"mehdi@gmail.com\",\n    \"password\":\"pppppp\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localhost}}/api/v1/auth/register",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Signup",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"ali\",\n    \"username\":\"ali\",\n    \"email\":\"ali@gmail.com\",\n    \"password\":\"aaaaaa\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localhost}}/api/auth/signup",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User Already Exist",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"ali\",\n    \"username\":\"ali\",\n    \"email\":\"ali@gmail.com\",\n    \"password\":\"aaaaaa\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localhost}}/api/auth/signup",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "Post",
 			"item": [
 				{
 					"name": "Create new post",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"auth": {
 							"type": "bearer",
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJtYW5pLm1naEBnbWFpbC5jb20iLCJpYXQiOjE2NzIzNTMwOTAsImV4cCI6MTY3Mjk1Nzg5MH0.4XCtLkbMG0XEael4kHO5pEPpSNSHbBamrchxcTHDur7yl0sEuhspvg_J-SWnJGs4",
+									"value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJtYW5pLm1naEBnbWFpbC5jb20iLCJpYXQiOjE2NzI2OTYxODcsImV4cCI6MTY3MzMwMDk4N30.Iaqj6KngXesW848syoKzz_JfmleA7Z1BSNorfgeCkzeSLSZBlYAkUuc36QLXR1-k",
 									"type": "string"
 								}
 							]
@@ -49,13 +237,27 @@
 				},
 				{
 					"name": "Create new post with Bearer Token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"auth": {
 							"type": "bearer",
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJzYWhhcm1vcmFAZ21haWwuY29tIiwiaWF0IjoxNjcyMzMwMDMzLCJleHAiOjE2NzI5MzQ4MzN9.JC03s36O7CBtLt8pnh9u_sZgC7OlMnI9TVoFtYNUfFkXXzcw1sRttaG8NNYB9icn",
+									"value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJtYW5pLm1naEBnbWFpbC5jb20iLCJpYXQiOjE2NzI3NTg3MDAsImV4cCI6MTY3MzM2MzUwMH0.f8pIm2HU8P7tycSMTdAup_1tRJ3w-E1Ix3tnEorD6r7WBBJW6rl_OvbmkqejjkYq",
 									"type": "string"
 								}
 							]
@@ -87,7 +289,36 @@
 				},
 				{
 					"name": "Create new post Validation Check",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"Post title should have at least 2 characters\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJtYW5pLm1naEBnbWFpbC5jb20iLCJpYXQiOjE2NzI3NTg3MDAsImV4cCI6MTY3MzM2MzUwMH0.f8pIm2HU8P7tycSMTdAup_1tRJ3w-E1Ix3tnEorD6r7WBBJW6rl_OvbmkqejjkYq",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
@@ -115,18 +346,36 @@
 				},
 				{
 					"name": "Get all Posts",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"Quentin\");",
+									"});",
+									"",
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"spring\");",
+									"});",
+									"pm.test(\"Response time is less than 200ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"auth": {
-							"type": "basic",
-							"basic": [
+							"type": "bearer",
+							"bearer": [
 								{
-									"key": "password",
-									"value": "mmmmmm",
-									"type": "string"
-								},
-								{
-									"key": "username",
-									"value": "mani.mgh",
+									"key": "token",
+									"value": "{{token}}",
 									"type": "string"
 								}
 							]
@@ -149,6 +398,19 @@
 				},
 				{
 					"name": "Get all Posts Testy with response Class",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"auth": {
 							"type": "basic",
@@ -181,6 +443,19 @@
 				},
 				{
 					"name": "Get all Posts sorting",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -214,6 +489,19 @@
 				},
 				{
 					"name": "Get all Posts sorting ascending",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -253,6 +541,19 @@
 				},
 				{
 					"name": "Get all Posts, pagination",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -963,181 +1264,6 @@
 								"3",
 								"comments",
 								"4"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Auth",
-			"item": [
-				{
-					"name": "login",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"usernameOrEmail\":\"ali\",\n    \"password\":\"aaaaaa\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{localhost}}/api/auth/login",
-							"host": [
-								"{{localhost}}"
-							],
-							"path": [
-								"api",
-								"auth",
-								"login"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Sign In with admin",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"usernameOrEmail\":\"mani.mgh@gmail.com\",\n    \"password\":\"mmmmmm\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{localhost}}/api/v1/auth/signin",
-							"host": [
-								"{{localhost}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"auth",
-								"signin"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Sign In with Role user",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"usernameOrEmail\":\"saharmora@gmail.com\",\n    \"password\":\"ssssss\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{localhost}}/api/auth/signin",
-							"host": [
-								"{{localhost}}"
-							],
-							"path": [
-								"api",
-								"auth",
-								"signin"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Register",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"name\":\"mehdi\",\n    \"username\":\"mehdi\",\n    \"email\":\"mehdi@gmail.com\",\n    \"password\":\"pppppp\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{localhost}}/api/v1/auth/register",
-							"host": [
-								"{{localhost}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"auth",
-								"register"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Signup",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"name\":\"ali\",\n    \"username\":\"ali\",\n    \"email\":\"ali@gmail.com\",\n    \"password\":\"aaaaaa\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{localhost}}/api/auth/signup",
-							"host": [
-								"{{localhost}}"
-							],
-							"path": [
-								"api",
-								"auth",
-								"signup"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "User Already Exist",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"name\":\"ali\",\n    \"username\":\"ali\",\n    \"email\":\"ali@gmail.com\",\n    \"password\":\"aaaaaa\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{localhost}}/api/auth/signup",
-							"host": [
-								"{{localhost}}"
-							],
-							"path": [
-								"api",
-								"auth",
-								"signup"
 							]
 						}
 					},
