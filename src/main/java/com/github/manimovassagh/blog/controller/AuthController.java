@@ -33,6 +33,7 @@ public class AuthController {
 
     /**
      * build register Rest Api
+     *
      * @param registerDto
      * @return
      */
