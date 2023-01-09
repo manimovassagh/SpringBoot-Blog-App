@@ -17,7 +17,11 @@ public class AuthController {
         this.authService = authService;
     }
 
-
+    /**
+     * login or signin
+     * @param loginDto
+     * @return
+     */
     @PostMapping(value = {"login", "signin"})
     @CrossOrigin
     public ResponseEntity<JwtAuthResponse> login(@RequestBody LoginDto loginDto) {
@@ -25,7 +29,6 @@ public class AuthController {
         JwtAuthResponse jwtAuthResponse = new JwtAuthResponse();
         jwtAuthResponse.setAccessToken(token);
         return ResponseEntity.ok(jwtAuthResponse);
-
     }
 
     /**
@@ -37,6 +40,5 @@ public class AuthController {
     public ResponseEntity<String> register(@RequestBody RegisterDto registerDto) {
         String response = authService.register(registerDto);
         return new ResponseEntity<>(response, HttpStatus.CREATED);
-
     }
 }
