@@ -6,6 +6,7 @@ import com.github.manimovassagh.blog.payload.APIResponse;
 import com.github.manimovassagh.blog.repository.PostRepository;
 import com.github.manimovassagh.blog.utils.SuccessFail;
 import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -13,6 +14,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
+@CrossOrigin(origins = "*")
 public class TestController {
     private final PostRepository postRepository;
 

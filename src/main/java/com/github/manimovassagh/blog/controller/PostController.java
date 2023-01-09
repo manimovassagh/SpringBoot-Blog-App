@@ -18,7 +18,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping()
-@CrossOrigin(value = "http://localhost:3000/**")
+@CrossOrigin(origins = "*")
 public class PostController {
 
     private PostService postService;
@@ -30,7 +30,7 @@ public class PostController {
     // create blog post rest api
     @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/api/v1/posts")
-    @CrossOrigin
+
     public ResponseEntity<PostDTO> createPost(@Valid @RequestBody PostDTO postDto){
         return new ResponseEntity<>(postService.createPost(postDto), HttpStatus.CREATED);
     }
