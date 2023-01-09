@@ -1,6 +1,5 @@
 package com.github.manimovassagh.blog.controller;
 
-
 import com.github.manimovassagh.blog.payload.JwtAuthResponse;
 import com.github.manimovassagh.blog.payload.LoginDto;
 import com.github.manimovassagh.blog.payload.RegisterDto;
@@ -17,22 +16,25 @@ public class AuthController {
     public AuthController(AuthService authService) {
         this.authService = authService;
     }
-@PostMapping(value = {"login","signin"})
-@CrossOrigin
-public ResponseEntity<JwtAuthResponse> login(@RequestBody LoginDto loginDto){
-    String token = authService.login(loginDto);
-
-    JwtAuthResponse jwtAuthResponse = new JwtAuthResponse();
-    jwtAuthResponse.setAccessToken(token);
-
-    return ResponseEntity.ok(jwtAuthResponse);
-
-}
 
 
-    //build register Rest Api
-    @PostMapping(value = {"register","signup"})
-    public  ResponseEntity<String> register(@RequestBody RegisterDto registerDto){
+    @PostMapping(value = {"login", "signin"})
+    @CrossOrigin
+    public ResponseEntity<JwtAuthResponse> login(@RequestBody LoginDto loginDto) {
+        String token = authService.login(loginDto);
+        JwtAuthResponse jwtAuthResponse = new JwtAuthResponse();
+        jwtAuthResponse.setAccessToken(token);
+        return ResponseEntity.ok(jwtAuthResponse);
+
+    }
+
+    /**
+     * build register Rest Api
+     * @param registerDto
+     * @return
+     */
+    @PostMapping(value = {"register", "signup"})
+    public ResponseEntity<String> register(@RequestBody RegisterDto registerDto) {
         String response = authService.register(registerDto);
         return new ResponseEntity<>(response, HttpStatus.CREATED);
 
