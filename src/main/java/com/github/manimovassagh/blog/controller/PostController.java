@@ -18,6 +18,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping()
+@CrossOrigin(value = "http://localhost:3000/**")
 public class PostController {
 
     private PostService postService;
@@ -29,12 +30,14 @@ public class PostController {
     // create blog post rest api
     @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/api/v1/posts")
+    @CrossOrigin
     public ResponseEntity<PostDTO> createPost(@Valid @RequestBody PostDTO postDto){
         return new ResponseEntity<>(postService.createPost(postDto), HttpStatus.CREATED);
     }
 
     // get all posts rest api
     @GetMapping("/api/v1/posts")
+    @CrossOrigin
     public PostResponse getAllPosts(
             @RequestParam(value = "pageNo", defaultValue = AppConstants.DEFAULT_PAGE_NUMBER, required = false) int pageNo,
             @RequestParam(value = "pageSize", defaultValue = AppConstants.DEFAULT_PAGE_SIZE, required = false) int pageSize,
