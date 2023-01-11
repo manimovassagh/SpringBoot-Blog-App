@@ -10,6 +10,9 @@ import org.springframework.http.HttpStatus;
 
 @Getter
 public class BlogApiException extends RuntimeException{
+    /**
+     * status path to user
+     */
     private HttpStatus status;
     private  String message;
 
