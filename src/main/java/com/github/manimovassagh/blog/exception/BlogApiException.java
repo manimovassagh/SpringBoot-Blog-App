@@ -1,9 +1,12 @@
 package com.github.manimovassagh.blog.exception;
 
 import lombok.Getter;
-import lombok.Setter;
 import org.springframework.http.HttpStatus;
 
+
+/**
+ * Exception to handle custom error messages and path it to user
+ */
 
 @Getter
 public class BlogApiException extends RuntimeException{
